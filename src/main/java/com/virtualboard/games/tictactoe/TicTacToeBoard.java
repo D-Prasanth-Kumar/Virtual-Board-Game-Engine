@@ -11,7 +11,7 @@ public class TicTacToeBoard extends Board {
         for(int i = 0; i < getRows(); i++) {
             for(int j = 0; j < getCols(); j++) {
                 String v = getCell(i, j);
-                System.out.println(" " + (v == null ? "-" : v) + " ");
+                System.out.print(" " + (v == null ? "-" : v) + " ");
                 if(j < getCols() - 1) System.out.print("|");
             }
             System.out.println();

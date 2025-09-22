@@ -35,5 +35,6 @@ public class TicTacToeMain {
 
             manager.playMove(move);
         }
+        in.close();
     }
 }
