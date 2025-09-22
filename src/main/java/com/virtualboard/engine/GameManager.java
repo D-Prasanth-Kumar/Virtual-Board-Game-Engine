@@ -25,7 +25,16 @@ public abstract class GameManager {
         currentTurn = (currentTurn + 1) % players.size();
     }
 
+    public com.virtualboard.engine.Board getBoard() {
+        return this.board;
+    }
+
+    public boolean isGameOver() {
+        return this.gameOver;
+    }
+
     protected abstract boolean isValidMove(Move move);
+
     protected abstract boolean isWinningCondition();
 
     public void playMove(Move move) {
