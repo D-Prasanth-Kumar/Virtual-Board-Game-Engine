@@ -7,7 +7,7 @@ import com.virtualboard.players.Player;
 
 import java.util.*;
 
-public class AppMain {
+public class TicTacToeMain {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
 
