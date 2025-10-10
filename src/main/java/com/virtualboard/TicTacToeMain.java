@@ -24,7 +24,7 @@ public class TicTacToeMain {
         System.out.println("Tic-Tac-Toe starting. Players: " + p1.getName() + " (X), " + p2.getName() + " (O)");
         while (!manager.isGameOver()) {
             com.virtualboard.players.Player current = manager.getCurrentPlayer();
-            manager.getBoard().display();
+           // manager.getBoard().display();
             System.out.println(current.getName() + "'s turn. Enter row and col (0-2): ");
             int row = in.nextInt();
             int col = in.nextInt();
