@@ -11,8 +11,9 @@ public class TicTacToeMain {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
 
-        Player p1 = new Player(1, "Prasanth");
-        System.out.println("Enter name of the second Player: ");
+        System.out.println("Enter name of the First Player: ");
+        Player p1 = new Player(1, in.nextLine());
+        System.out.println("Enter name of the Second Player: ");
         Player p2 = new Player(2, in.nextLine());
 
         List<Player> players = new ArrayList<>();
