@@ -1,8 +1,6 @@
-package com.virtualboard;
+package com.virtualboard.games.tictactoe;
 
 import com.virtualboard.engine.Move;
-import com.virtualboard.games.tictactoe.TicTacToeManager;
-import com.virtualboard.games.tictactoe.TicTacToePiece;
 import com.virtualboard.players.Player;
 
 import java.util.*;
