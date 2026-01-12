@@ -1,0 +1,25 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap');
+
+@theme {
+  
+  --font-pixel: "Press Start 2P", cursive;
+  --font-mono: "VT323", monospace;
+
+  --color-retro-green: #4ade80;
+}
+
+@layer base {
+  body {
+    @apply bg-gray-900 text-retro-green min-h-screen font-mono;
+    /* Retro Scanline Effect */
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), 
+                linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+    background-size: 100% 4px, 3px 100%;
+    background-color: #0f172a;
+  }
+}
+
+@utility pixel-border {
+  box-shadow: 0 0 0 4px #111827, 0 0 0 8px #4ade80;
+}

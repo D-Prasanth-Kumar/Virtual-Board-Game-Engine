@@ -1,6 +1,6 @@
 package com.virtualboard.players;
 
-import com.virtualboard.engine.Game;  //Aggregation: Player knows about Game
+import com.virtualboard.engine.Game;
 
 public class Player {
     private String name;
@@ -40,7 +40,6 @@ public class Player {
         return playerId;
     }
 
-    // Assign Game (Aggregation)
     public void joinGame(Game game) {
         this.currentGame = game;
         System.out.println(name + " joined " + game.getName());

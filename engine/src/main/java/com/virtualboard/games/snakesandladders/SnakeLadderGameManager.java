@@ -6,6 +6,8 @@ import com.virtualboard.players.Player;
 import java.util.*;
 
 public class SnakeLadderGameManager {
+    private int turnIndex = 0;
+
     private SnakeLadderBoard board;
     private Dice dice;
     private List<Player> players;
@@ -24,6 +26,17 @@ public class SnakeLadderGameManager {
         this.winner = null;
     }
 
+    public int getPlayerPosition(Player player) {
+
+        return positions.getOrDefault(player, 0);
+    }
+
+    public Player getNextPlayer() {
+        Player p = players.get(turnIndex);
+        turnIndex = (turnIndex + 1) % players.size();
+        return p;
+    }
+
     public SnakeLadderGameManager(SnakeLadderBoard board, List<Player> players) {
         this.board = board;
         this.dice = new Dice();
@@ -36,27 +49,22 @@ public class SnakeLadderGameManager {
         this.winner = null;
     }
 
-    public void playTurn(Player player) {
-        if(winner != null) return;
-
-        int currentPos = positions.get(player);
+    public int playTurn(Player player) {
         int roll = dice.roll();
+
+        int currentPos = positions.getOrDefault(player, 1);
         int nextPos = currentPos + roll;
 
-        if(nextPos > board.getSize()) {
-            System.out.println(player.getName() + " rolled " + roll + " but cannot move (out of the board).");
-            return;
+        if (nextPos <= 100) {
+            nextPos = board.getNewPosition(nextPos);
+            positions.put(player, nextPos);
+
+            if (nextPos == 100) {
+                winner = player;
+            }
         }
 
-        int finalPos = board.getNextPosition(nextPos);
-        positions.put(player, finalPos);
-
-        System.out.println(player.getName() + " rolled " + roll + " -> moved from " + currentPos + " to " + finalPos);
-
-        if(finalPos == board.getSize()) {
-            winner = player;
-            System.out.println(player.getName() + " is the WINNER!");
-        }
+        return roll;
     }
 
     public boolean hasWinner() {
