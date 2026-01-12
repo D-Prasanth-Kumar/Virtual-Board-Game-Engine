@@ -7,7 +7,7 @@ import java.util.*;
 
 @RestController
 @RequestMapping("/api/snakes")
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = "*")
 public class SnakeLadderController {
 
     @Autowired
