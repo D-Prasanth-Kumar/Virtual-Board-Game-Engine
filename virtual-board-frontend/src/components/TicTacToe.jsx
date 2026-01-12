@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
+const API_BASE = import.meta.env.VITE_API_BASE_URL || "http://localhost:8080";
+
 const TicTacToe = () => {
   const [gameState, setGameState] = useState({
     board: [["-", "-", "-"], ["-", "-", "-"], ["-", "-", "-"]],
@@ -14,7 +16,7 @@ const TicTacToe = () => {
 
   const handleStart = async () => {
     try {
-      const res = await axios.post('http://localhost:8080/api/tictactoe/start', {
+      const res = await axios.post(`${API_BASE}/api/tictactoe/start`, {
         player1: players.p1,
         player2: players.p2
       });
@@ -28,7 +30,7 @@ const TicTacToe = () => {
   const handleMove = async (row, col) => {
     if (!isStarted || gameState.gameOver) return;
     try {
-      const res = await axios.post('http://localhost:8080/api/tictactoe/move', { row, col });
+      const res = await axios.post(`${API_BASE}/api/tictactoe/move`, { row, col });
       setGameState(res.data);
     } catch (err) {
       console.error("Invalid Move");

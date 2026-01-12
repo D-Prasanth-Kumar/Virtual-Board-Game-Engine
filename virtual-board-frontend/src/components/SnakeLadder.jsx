@@ -15,6 +15,8 @@ const SnakeLadder = () => {
   const [isRolling, setIsRolling] = useState(false);
   const [diceValue, setDiceValue] = useState(1);
   const [gameOver, setGameOver] = useState(false);
+  const API_BASE = import.meta.env.VITE_API_BASE_URL || "http://localhost:8080";
+
 
   const renderBoard = () => {
     let rows = [];
@@ -39,7 +41,7 @@ const SnakeLadder = () => {
 
   const handleStart = async () => {
     try {
-      const res = await axios.post('http://localhost:8080/api/snakes/start', [players.p1, players.p2]);
+      const res = await axios.post(`${API_BASE}/api/snakes/start`, [players.p1, players.p2]);
       setIsStarted(true);
       setStatus("GAME_ACTIVE");
       setPositions({ [players.p1]: 1, [players.p2]: 1 });
@@ -55,7 +57,7 @@ const SnakeLadder = () => {
     const interval = setInterval(() => setDiceValue(Math.floor(Math.random() * 6) + 1), 80);
 
     try {
-      const res = await axios.post('http://localhost:8080/api/snakes/roll');
+      const res = await axios.post(`${API_BASE}/api/snakes/roll`);
       setTimeout(() => {
         clearInterval(interval);
         setIsRolling(false);
